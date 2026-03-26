@@ -5,10 +5,6 @@ int get_value(int a, int b, int c, int x){
     return a*x*x+b*x+c;
 }
 int main(){
-    
-printf("Ho Va Ten: Nguyen Thi Kieu Trang\n");
-printf("MSSV: 24133064\n\n");
-
 int x;
 printf("Nhap x:");
 scanf("%d", &x);

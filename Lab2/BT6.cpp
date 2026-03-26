@@ -25,12 +25,6 @@ n = (*odd)(n);
 simulate(n, odd, even, output);
 }
 int main() {
-
-    printf("Ho Va Ten: Nguyen Thi Kieu Trang\n");
-
-    printf("MSSV: 24133064\n\n");
-
-
 int (*odd)(int) = NULL;
 int (*even)(int) = NULL;
 odd = mul3plus1;

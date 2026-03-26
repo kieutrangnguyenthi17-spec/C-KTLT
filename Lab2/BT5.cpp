@@ -35,11 +35,6 @@ out << '(' << std::setprecision(2) << a.real << (a.imag >= 0 ? '+' : '-')
 return out;
 }
 int main() {
-
-printf("Ho Va Ten: Nguyen Thi Kieu Trang\n");
-
-printf("MSSV: 24133064\n\n");
-
 double real_a, real_b, img_a, img_b;
 cin >> real_a >> img_a;
 cin >> real_b >> img_b;
