@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Quiz Game</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f3f3f3;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .quiz-container {
+        background: white;
+        width: 450px;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    h2 {
+        margin-bottom: 15px;
+    }
+    .option {
+        padding: 10px;
+        margin: 8px 0;
+        background: #eee;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    .option:hover {
+        background: #d4d4d4;
+    }
+    #nextBtn {
+        margin-top: 15px;
+        padding: 10px;
+        width: 100%;
+        border: none;
+        background: #007bff;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    #nextBtn:hover {
+        background: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h2 id="question">Question text</h2>
+    <div id="options"></div>
+    <button id="nextBtn">Next</button>
+    <p id="score" style="font-weight:bold; margin-top:10px;"></p>
+</div>
+
+<script>
+const quiz = [
+    {
+        q: "What does CPU stand for?",
+        a: ["Central Processing Unit", "Computer Processing User", "Control Program Utility", "Central Power Unit"],
+        correct: 0
+    },
+    {
+        q: "Which one is a programming language?",
+        a: ["HTML", "CSS", "Python", "Photoshop"],
+        correct: 2
+    },
+    {
+        q: "2 + 2 = ?",
+        a: ["3", "4", "5", "22"],
+        correct: 1
+    }
+];
+
+let current = 0;
+let score = 0;
+
+function loadQuestion() {
+    let q = quiz[current];
+    document.getElementById("question").innerText = q.q;
+
+    let optionHtml = "";
+    q.a.forEach((opt, idx) => {
+        optionHtml += `<div class='option' onclick='checkAnswer(${idx})'>${opt}</div>`;
+    });
+
+    document.getElementById("options").innerHTML = optionHtml;
+}
+
+function checkAnswer(choice) {
+    if (choice === quiz[current].correct) {
+        score++;
+    }
+    current++;
+
+    if (current < quiz.length) {
+        loadQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    document.getElementById("question").innerText = "Quiz Completed!";
+    document.getElementById("options").innerHTML = "";
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("score").innerText = 
+        "Your score: " + score + " / " + quiz.length;
+}
+
+document.getElementById("nextBtn").addEventListener("click", () => {
+    current++;
+    if (current < quiz.length) {
+        loadQuestion();
+    }
+});
+
+loadQuestion();
+</script>
+
+</body>
+</html>

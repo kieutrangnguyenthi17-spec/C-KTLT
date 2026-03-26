@@ -1,0 +1,14 @@
+#include<stdio.h>
+int main(){
+    // mở hoặc tạo mới tập tin "text. txt" ở chế độ ghi
+    FILE *f=fopen("text.txt", "w");
+    if(f==NULL){
+        printf("Mo tap tin khong thanh cong!\n");
+        return 1;
+    }
+    else {
+        printf("Mo tap tin thanh cong!\n");
+        fclose(f); // đóng tập tin sau khi mở thành công
+    }
+    return 0;
+}
